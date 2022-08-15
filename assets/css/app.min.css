@@ -1,0 +1,72 @@
+.navbar-expand-lg .navbar-nav .nav-link {
+	margin-right: 1rem;
+	margin-left: 1rem;
+	padding: 12px;
+}
+
+.nav-item:hover {
+	background-color: #40ddf7;
+	border-radius: 25px;
+}
+
+.navbar-expand-lg .navbar-nav .dropdown-menu {
+	position: absolute;
+	left: 87%;
+	background-color: red;
+}
+
+.body-content {
+	position: absolute;
+	top: 65px;
+	/* padding-bottom: 65px; */
+	width: 100%;
+	/* background-color: #f5f5f5; */
+    height: 89vh;
+}
+
+.bg-light {
+	--bs-bg-opacity: 1;
+	background: #02c3ff !important;
+}
+
+input,
+optgroup,
+select,
+textarea {
+	margin: 0;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	border: none;
+	border-bottom-color: currentcolor;
+	border-bottom-style: none;
+	border-bottom-width: medium;
+	/* background: #f5f5f5; */
+	border-bottom: 1px solid #c1c1c1;
+	width: 70%;
+}
+
+input,
+optgroup,
+select,
+textarea:focus {
+	outline: none;
+}
+
+.showPassword, .showPassword2{
+    position: relative;
+}
+
+input[name=password]{
+    width: 423px;
+}
+
+input[name=con_password]{
+    width: 423px;
+}
+
+.switch1, .switch2{
+    position: absolute;
+    top: 0px;
+    left: 100%;
+}
