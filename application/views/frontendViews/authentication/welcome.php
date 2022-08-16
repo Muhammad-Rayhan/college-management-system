@@ -6,7 +6,15 @@
         </div>
         <div class="col-6 mt-3 ps-5">
             <div class="d-flex justify-content-between">
-                <a href="<?php echo base_url('admin-register') ?>" class="btn btn-primary text-white">ADMIN REGISTER</a>
+                <?php
+                    if(1 == $getRegisterInfo){
+
+                    } else{
+                        ?>
+                            <a href="<?php echo base_url('admin-register') ?>" class="btn btn-primary text-white">ADMIN REGISTER</a>
+                        <?php
+                    }
+                ?>
                 <a href="<?php echo base_url('admin-login') ?>" class="btn btn-primary text-white">ADMIN LOGIN</a>
             </div>
         </div>

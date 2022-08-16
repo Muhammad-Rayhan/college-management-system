@@ -19,6 +19,7 @@ class AuthenticationController extends CI_Controller {
 			'js' => $js,
 			'title' => 'College Management System',
 			'body' => 'frontendViews/authentication/welcome',
+			'getRegisterInfo' => $this->CommonModel->checkAdminExist(),
 		];
 		$this->load->view("frontendViews/layouts/baseLayout", $data);
 	}
@@ -42,8 +43,8 @@ class AuthenticationController extends CI_Controller {
 	//Sign Up Here
 	public function signup()
 	{
-		$this->form_validation->set_rules('name', 'user name', 'trim|required');
-		$this->form_validation->set_rules('email', 'email', 'trim|required');
+		$this->form_validation->set_rules('name', 'user name', 'required');
+		$this->form_validation->set_rules('email', 'email', 'trim|required|valid_email');
 		$this->form_validation->set_rules('gender', 'gender', 'required');
 		$this->form_validation->set_rules('role', 'role', 'required');
 		$this->form_validation->set_rules('password', 'password', 'trim|required|min_length[5]');
@@ -52,12 +53,14 @@ class AuthenticationController extends CI_Controller {
 		if($this->form_validation->run()){
 			$table = 'tbl_users';
 			$data = $this->input->post();
+			$data['password'] = sha1($this->input->post('password'));
+			$data['con_password'] = sha1($this->input->post('con_password'));
 			$result = $this->CommonModel->dataInsert($table, $data);
 			if($result == true){
-				$this->session->set_flashdata('success', "Data Insert Successfully.");
+				$this->session->set_flashdata('success', "Admin Register Successfully.");
 				$this->register();
 			} else if($result == false) {
-				$this->session->set_flashdata('error', "Data Not Found!.");
+				$this->session->set_flashdata('error', "Data Register Failed!.");
 				$this->register();
 			}
 		} else{
@@ -86,7 +89,23 @@ class AuthenticationController extends CI_Controller {
 		$this->form_validation->set_rules('password', 'password', 'trim|required');
 
 		if ($this->form_validation->run()) {
-			echo "valid";
+			$table = 'tbl_users';
+			$email = $this->input->post('email');
+			$password = sha1($this->input->post('password'));
+			$data = $this->CommonModel->adminCheck($table, $email, $password);
+			if($data == true){
+				$sessionData = [
+					'user_id' => $data->user_id,
+					'name' => $data->name,
+					'email' => $data->email,
+					'role' => $data->role,
+				];
+				$this->session->set_userdata($sessionData);
+				return redirect('dashboard');
+			} else{
+				$this->session->set_flashdata('loginFailed', "Please Enter Your Valid Email & Password");
+				$this->login();
+			}
 		} else {
 			$this->login();
 		}

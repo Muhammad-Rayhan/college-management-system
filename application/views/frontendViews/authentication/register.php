@@ -45,7 +45,7 @@
                     <div class="col-6">
                         <div class="form-group mt-3 d-flex justify-content-between">
                             <label for="" style="font-size: 20px;">Gender</label>
-                            <select style="cursor: pointer; background: white;" value="<?php echo set_value('gender') ?>" name="gender">
+                            <select style="cursor: pointer; background: white;" value="<?php echo set_select('gender') ?>" name="gender">
                                 <option value="">Select</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
@@ -60,7 +60,7 @@
                     <div class="col-6">
                         <div class="form-group mt-3 d-flex justify-content-between">
                             <label for="" style="font-size: 20px;">Role</label>
-                            <select style="cursor: pointer; background: white;" value="<?php echo set_value('role') ?>" name="role">
+                            <select style="cursor: pointer; background: white;" value="<?php echo set_select('role') ?>" name="role">
                                 <option value="">Select</option>
                                 <?php
                                 if ($getRoleData == true) {

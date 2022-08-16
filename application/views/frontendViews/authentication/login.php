@@ -1,6 +1,14 @@
 <div class="container-fluid px-5" style="margin-bottom: 75px;">
     <div class="row mt-3">
         <div class="col-12">
+            <?php
+                $failedMessage = $this->session->flashdata('loginFailed');
+                if($failedMessage){
+                    ?>
+                        <div class="alert alert-danger"><?php echo $failedMessage ?></div>
+                    <?php
+                }
+            ?>
             <h2>ADMIN LOGIN</h2>
             <hr>
         </div>

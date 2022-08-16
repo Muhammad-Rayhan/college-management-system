@@ -58,6 +58,8 @@ $route['translate_uri_dashes'] = FALSE;
 $route['admin-register'] = 'AuthenticationController/register';
 //Admin Login
 $route['admin-login'] = 'AuthenticationController/login';
+//Admin Dashboard
+$route['dashboard'] = 'frontendControllers/adminController/dashboard';
 /*==========Page View End==========*/
 
 //Admin Signup
