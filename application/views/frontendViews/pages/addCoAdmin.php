@@ -8,17 +8,17 @@
             ?>
                 <div class="alert alert-success"><?php echo $success ?></div>
             <?php
-            } else if($error == true) {
+            } else if ($error == true) {
             ?>
                 <div class="alert alert-danger"><?php echo $error ?></div>
             <?php
             }
             ?>
-            <h2>ADMIN REGISTRATION</h2>
+            <h2>COADMIN REGISTRATION</h2>
             <hr>
         </div>
         <div class="col-12 mt-3 ps-5">
-            <form action="<?php echo base_url('admin-signup') ?>" method="post">
+            <form action="<?php echo base_url('co-admin') ?>" method="post">
                 <div class="row">
                     <div class="col-6 pt-2">
                         <div class="form-group d-flex justify-content-between">
@@ -31,9 +31,31 @@
                             <div class="text-danger"><?php echo form_error('name') ?></div>
                         </div>
                     </div>
+                    <div class="col-6 pt-3">
+                        <div class="form-group d-flex justify-content-between">
+                            <label for="" style="font-size: 20px;">College Name</label>
+                            <select style="cursor: pointer; background: white;" value="<?php echo set_select('college') ?>" name="college_id">
+                                <option value="">Select</option>
+                                <?php
+                                if ($getTableData != "") {
+                                    foreach ($getTableData as $value) {
+                                ?>
+                                        <option value="<?php echo $value->id ?>"><?php echo $value->college ?></option>
+                                <?php
+                                    }
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group mt-2 ps-3">
+                            <div class="text-danger"><?php echo form_error('college_id') ?></div>
+                        </div>
+                    </div>
                     <div class="col-6">
                         <div class="form-group mt-3 d-flex justify-content-between">
-                            <label for="" style="font-size: 20px;">Email</label>
+                            <label for="" style="font-size: 20px;">email</label>
                             <input type="email" placeholder="Email" value="<?php echo set_value('email') ?>" name="email">
                         </div>
                     </div>
@@ -113,8 +135,8 @@
                     </div>
                     <div class="col-6">
                         <div class="form-group">
-                            <button class="btn btn-primary px-4 py-1">REGISTER</button>
-                            <a href="<?php echo base_url() ?>" class="btn btn-primary px-4 py-1">BACK</a>
+                            <button class="btn btn-primary px-4 py-1">ADD</button>
+                            <a href="<?php echo base_url('dashboard') ?>" class="btn btn-primary px-4 py-1">BACK</a>
                         </div>
                     </div>
                 </div>

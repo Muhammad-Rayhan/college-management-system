@@ -7,6 +7,9 @@ class AuthenticationController extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model("frontendModels/CommonModel");
+		if($this->session->userdata('user_id')){
+			return redirect('dashboard');
+		}
 	}
 
 	//Welcome Page Load Here

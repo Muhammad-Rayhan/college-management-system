@@ -54,15 +54,49 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 /*==========Page View Start==========*/
-//Admin Register
+//View Admin Register Page
 $route['admin-register'] = 'AuthenticationController/register';
-//Admin Login
+//View Admin Login Page
 $route['admin-login'] = 'AuthenticationController/login';
-//Admin Dashboard
+//View Admin Dashboard
 $route['dashboard'] = 'frontendControllers/adminController/dashboard';
+//View College Add Page
+$route['add-college'] = 'frontendControllers/adminController/viewCollege';
+//View Co-Admin Add Page
+$route['add-coadmin'] = 'frontendControllers/adminController/viewCoAdmin';
+//View Student Add Page
+$route['add-student'] = 'frontendControllers/adminController/viewStudent';
+//View or Display Student Data Who Was Read Same College
+$route['show-student/(:num)'] = 'frontendControllers/adminController/showStudent/$1';
 /*==========Page View End==========*/
 
-//Admin Signup
+
+//Admin Signup / Register
 $route['admin-signup'] = 'AuthenticationController/signup';
-//Admin Signup
+//Admin Co-Admin & User Signin / Login
 $route['admin-signin'] = 'AuthenticationController/signin';
+//Admin Co-Admin & User Logout
+$route['logout'] = 'frontendControllers/logoutController/logout';
+
+
+//ADD College
+$route['college'] = 'frontendControllers/adminController/addCollege';
+//ADD Coadmin
+$route['co-admin'] = 'frontendControllers/adminController/addCoAdmin';
+//ADD Coadmin
+$route['student'] = 'frontendControllers/adminController/addStudent';
+//ADD Coadmin
+$route['update-student/(:num)'] = 'frontendControllers/adminController/updateStudent/$1';
+
+/*===========Display All Data Start==========*/
+//Display Multi Table Data On Dashbord
+$route['display-data'] = 'frontendControllers/adminController/displayMultiTableData';
+/*===========Display All Data End==========*/
+
+
+/*===========Student Data Action Start==========*/
+//Edit Student
+$route['edit-student/(:num)'] = 'frontendControllers/adminController/editStudent/$1';
+//Delete Student
+$route['delete-student/(:num)'] = 'frontendControllers/adminController/deleteStudent/$1';
+/*===========Student Data Action End==========*/

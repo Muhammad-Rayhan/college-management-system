@@ -4,15 +4,20 @@
 	padding: 12px;
 }
 
-.nav-item:hover {
+/* .nav-item:hover {
 	background-color: #40ddf7;
 	border-radius: 25px;
-}
+} */
 
 .navbar-expand-lg .navbar-nav .dropdown-menu {
 	position: absolute;
 	left: 87%;
 	background-color: red;
+}
+
+
+.dropdown-toggle::after {
+    color: white;
 }
 
 .body-content {
