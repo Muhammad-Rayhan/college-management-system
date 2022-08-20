@@ -6,30 +6,40 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" href="#"><b style="margin-right: 5px;" class="text-white">SETTING</b></a>
-                    <ul class="dropdown-menu bg-white" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="<?php echo base_url('dashboard') ?>"><i class="fa-solid fa-house-chimney me-2"></i><b>Dashboard</b></a></li>
-                        <li><a class="dropdown-item" href="<?php echo base_url('logout') ?>"><i class="fa-solid fa-right-from-bracket me-2"></i><b>Log Out</b></a></li>
+            <?php
+            $data = $this->session->userdata('user_id');
+            if ($data) {
+                $role_id = $this->session->userdata('role');
+                if ($role_id == 1) {
+            ?>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" href="#"><b style="margin-right: 5px;" class="text-white">SETTING</b></a>
+                            <ul class="dropdown-menu bg-white" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="<?php echo base_url('dashboard') ?>"><i class="fa-solid fa-house-chimney me-2"></i><b>Dashboard</b></a></li>
+                                <li><a class="dropdown-item" href="<?php echo base_url('dashboard') ?>"><i class="fa-solid fa-people-roof me-2"></i><b>Co Admin</b></a></li>
+                                <li><a class="dropdown-item" href="<?php echo base_url('logout') ?>"><i class="fa-solid fa-right-from-bracket me-2"></i><b>Log Out</b></a></li>
+                            </ul>
+                        </li>
                     </ul>
-                </li>
-            </ul>
+                <?php
+                } else if ($role_id > 1) {
+                ?>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" href="#"><b style="margin-right: 5px;" class="text-white">SETTING</b></a>
+                            <ul class="dropdown-menu bg-white" aria-labelledby="dropdownMenuButton1">
+                                <!-- <li><a class="dropdown-item" href="<?php echo base_url('dashboard') ?>"><i class="fa-solid fa-house-chimney me-2"></i><b>Dashboard</b></a></li>
+                            <li><a class="dropdown-item" href="<?php echo base_url('dashboard') ?>"><i class="fa-solid fa-house-chimney me-2"></i><b>Co Admin</b></a></li> -->
+                                <li><a class="dropdown-item" href="<?php echo base_url('logout') ?>"><i class="fa-solid fa-right-from-bracket me-2"></i><b>Log Out</b></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+            <?php
+                }
+            }
+            ?>
         </div>
-
-        <!-- <div class="d-flex justify-content-between w-100">
-
-            <div class="dropdown">
-                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    SETTING
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-            </div>
-        </div> -->
     </div>
 </nav>
 <!-- Menubar End -->

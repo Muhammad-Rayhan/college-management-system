@@ -37,28 +37,70 @@
             }
             ?>
             <!-- ========================================= -->
-            <h2>ADMIN DASHBOARD</h2>
-            <h5>Welcome <?php echo $this->session->userdata('name') ?></h5>
-            <a href="<?php echo base_url('add-college') ?>" class="btn btn-primary">ADD COLLEGE</a>
-            <a href="<?php echo base_url('add-coadmin') ?>" class="btn btn-primary">ADD COADMIN</a>
-            <a href="<?php echo base_url('add-student') ?>" class="btn btn-primary">ADD STUDENT</a>
+            <?php
+            $data = $this->session->userdata('role');
+            // echo "<pre>";
+            // print_r($data);
+            // echo "</pre>";
+            if ($data == 1) {
+            ?>
+                <h2>ADMIN DASHBOARD</h2>
+                <h5>Welcome <?php echo $this->session->userdata('name') ?></h5>
+                <a href="<?php echo base_url('add-college') ?>" class="btn btn-primary">ADD COLLEGE</a>
+                <a href="<?php echo base_url('add-coadmin') ?>" class="btn btn-primary">ADD COADMIN</a>
+                <a href="<?php echo base_url('add-student') ?>" class="btn btn-primary">ADD STUDENT</a>
+            <?php
+            } else if ($data > 1) {
+            ?>
+                <h2>COADMIN DASHBOARD</h2>
+                <h5>Welcome <?php echo $this->session->userdata('name') ?></h5>
+                <!-- <a href="<?php echo base_url('add-college') ?>" class="btn btn-primary">ADD COLLEGE</a>
+                <a href="<?php echo base_url('add-coadmin') ?>" class="btn btn-primary">ADD COADMIN</a>
+                <a href="<?php echo base_url('add-student') ?>" class="btn btn-primary">ADD STUDENT</a> -->
+            <?php
+            }
+            ?>
             <hr>
         </div>
         <div class="col-12">
-            <table id="example" class="display" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>College Name</th>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>Gender</th>
-                        <th>Branch</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-            </table>
+            <?php
+            $data = $this->session->userdata('role');
+            if ($data == 1) {
+            ?>
+                <table id="example" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>College Name</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Gender</th>
+                            <th>Branch</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                </table>
+            <?php
+            } else if ($data > 1) {
+            ?>
+                <table id="example1" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>College Name</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Gender</th>
+                            <th>Branch</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                </table>
+            <?php
+            }
+            ?>
         </div>
     </div>
 </div>
@@ -69,5 +111,8 @@
             ajax: "<?php echo base_url('display-data') ?>",
             order: [],
         });
+    });
+    $(document).ready(function() {
+        $('#example1').DataTable();
     });
 </script>
