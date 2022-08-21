@@ -101,6 +101,7 @@ class AuthenticationController extends CI_Controller {
 					'user_id' => $data->user_id,
 					'name' => $data->name,
 					'email' => $data->email,
+					'college_id' => $data->college_id,
 					'role' => $data->role,
 				];
 				$this->session->set_userdata($sessionData);

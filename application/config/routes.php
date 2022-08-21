@@ -91,6 +91,8 @@ $route['update-student/(:num)'] = 'frontendControllers/adminController/updateStu
 /*===========Display All Data Start==========*/
 //Display Multi Table Data On Dashbord
 $route['display-data'] = 'frontendControllers/adminController/displayMultiTableData';
+//Display Coadmin Student Multi Table Data On Coadmin Dashbord
+$route['student-data'] = 'frontendControllers/adminController/displayCoadminData';
 /*===========Display All Data End==========*/
 
 

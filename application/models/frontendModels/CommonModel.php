@@ -83,4 +83,13 @@ class CommonModel extends CI_Model {
         return $this->db->get()->result();
     }
     /*========================= Display All Student Data Fatch on Multi Table =========================*/
+
+    public function getCoadminStudentData()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_college');
+        $this->db->join('tbl_student', 'tbl_student.college_id = tbl_college.id');
+        // $this->db->where("tbl_student.college_id", $collegeID);
+        return $this->db->get()->result();
+    }
 }

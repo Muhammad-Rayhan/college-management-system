@@ -38,11 +38,11 @@
             ?>
             <!-- ========================================= -->
             <?php
-            $data = $this->session->userdata('role');
+            $role_id = $this->session->userdata('role');
             // echo "<pre>";
             // print_r($data);
             // echo "</pre>";
-            if ($data == 1) {
+            if ($role_id == 1) {
             ?>
                 <h2>ADMIN DASHBOARD</h2>
                 <h5>Welcome <?php echo $this->session->userdata('name') ?></h5>
@@ -50,7 +50,7 @@
                 <a href="<?php echo base_url('add-coadmin') ?>" class="btn btn-primary">ADD COADMIN</a>
                 <a href="<?php echo base_url('add-student') ?>" class="btn btn-primary">ADD STUDENT</a>
             <?php
-            } else if ($data > 1) {
+            } else if ($role_id > 1) {
             ?>
                 <h2>COADMIN DASHBOARD</h2>
                 <h5>Welcome <?php echo $this->session->userdata('name') ?></h5>
@@ -64,8 +64,8 @@
         </div>
         <div class="col-12">
             <?php
-            $data = $this->session->userdata('role');
-            if ($data == 1) {
+            $role_id = $this->session->userdata('role');
+            if ($role_id == 1) {
             ?>
                 <table id="example" class="display" style="width:100%">
                     <thead>
@@ -82,7 +82,7 @@
                     </thead>
                 </table>
             <?php
-            } else if ($data > 1) {
+            } else if ($role_id > 1) {
             ?>
                 <table id="example1" class="display" style="width:100%">
                     <thead>
@@ -113,6 +113,9 @@
         });
     });
     $(document).ready(function() {
-        $('#example1').DataTable();
+        $('#example1').DataTable({
+            ajax: "<?php echo base_url('student-data') ?>",
+            order: [],
+        });
     });
 </script>

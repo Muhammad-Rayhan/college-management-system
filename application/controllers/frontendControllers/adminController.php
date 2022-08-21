@@ -254,4 +254,14 @@ class AdminController extends CI_Controller {
             return redirect(base_url("dashboard"));
         }
     }
+
+    //Display Coadmin Data
+    public function displayCoadminData()
+    {
+        // $collegeID = $this->session->userdata('college_id');
+
+        $resultList = $this->CommonModel->getCoadminStudentData();
+        echo "<pre>";
+        echo print_r($resultList);
+    }
 }
